@@ -1,1 +1,8 @@
-# Kurs Python-Backend
+# Kurs Python-Backend @ ALX
+
+---
+
+- [x] 2022-06-25
+- [ ] 2022-06-26
+- [ ] 2022-07-09
+- [ ] 2022-07-10
