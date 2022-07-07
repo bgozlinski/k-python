@@ -39,9 +39,6 @@ def suma(lista):
 
 
 def main():
-    # for i,j in enumerate(list):
-    #     print(wyliczKalorycznosc(j,produkt[i]))
-    # print(f'{"="*len(wyliczKalorycznosc(salata, 350))}')
     for i in lista:
         print(wyliczKalorycznosc(i))
     print(f'{"="*len(wyliczKalorycznosc(i))}')
