@@ -6,22 +6,24 @@ sałatka:
     sałata - 350g
 """
         # nazwa, kCal, bialko, tluszcz, weglodowany, cena/kg, waga
-lista = [["pomidor", 19, 1, 0, 4, 5.7, 350],
-         ["ser mozzarella", 248, 18, 19, 2, 38.32, 325],
-         ["sałata", 13, 1, 0, 2, 3.15, 350]
-         ]
+lista = [
+    ["pomidor", 19, 1, 0, 4, 5.7, 350],
+    ["ser mozzarella", 248, 18, 19, 2, 38.32, 325],
+    ["sałata", 13, 1, 0, 2, 3.15, 350]
+    ]
 
 
 def wyliczKalorycznosc(produkt):
-    return f'{produkt[0]:20s}, ' \
-           f'kalorie: {produkt[1]*produkt[6]/100:>6.2f}, ' \
-           f'białko: {produkt[2]*produkt[6]/100:>6.2f}, ' \
-           f'tluszcz: {produkt[3]*produkt[6]/100:>6.2f}, ' \
-           f'weglowodany: {produkt[4]*produkt[6]/100:>6.2f}, ' \
-           f'koszt: {produkt[5]*produkt[6]/1000:>6.2f} zł'
+    output = f"{produkt[0]:20s}, " \
+             f"kalorie: {produkt[1] * produkt[6] / 100:>6.2f}, " \
+             f"białko: {produkt[2] * produkt[6] / 100:>6.2f}, " \
+             f"tluszcz: {produkt[3] * produkt[6] / 100:>6.2f}, " \
+             f"weglowodany: {produkt[4] * produkt[6] / 100:>6.2f}, " \
+             f"koszt: {produkt[5] * produkt[6] / 1000:>6.2f} zł"
+    return output
 
 
-def suma(lista):
+def suma(lista: list) -> str:
     kalorie, bialko, tluszcz, weglowodany, cena, waga = 0, 0, 0, 0, 0, 0
     for i in lista:
         kalorie += i[1]*i[6]/100
@@ -30,12 +32,10 @@ def suma(lista):
         weglowodany += i[4]*i[6]/100
         cena += i[5]*i[6]/1000
 
-    return f'{"SUMA":20s}, ' \
-           f'kalorie: {kalorie:>6.2f}, ' \
-           f'białko: {bialko:>6.2f}, ' \
-           f'tluszcz: {tluszcz:>6.2f}, ' \
-           f'weglowodany: {weglowodany:>6.2f}, ' \
-           f'koszt: {cena:>6.2f} zł'
+    output = f'{"SUMA":20s}, ' \
+             f'kalorie: {kalorie:>6.2f}, białko: {bialko:>6.2f}, ' \
+             f'tluszcz: {tluszcz:>6.2f}, weglowodany: {weglowodany:>6.2f}, ' \
+             f'koszt: {cena:>6.2f} zł'
 
     return output
 
