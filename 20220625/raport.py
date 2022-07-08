@@ -5,12 +5,11 @@ sałatka:
     mozarella - 325g
     sałata - 350g
 """
-# nazwa, kCal, bialko, tluszcz, weglodowany, cena/kg, waga
-pomidor = ["pomidor", 19, 1, 0, 4, 5.7, 350]
-mozarella = ["ser mozzarella", 248, 18, 19, 2, 38.32, 325]
-salata = ["sałata", 13, 1, 0, 2, 3.15, 350]
-
-lista = [pomidor, mozarella, salata]
+        # nazwa, kCal, bialko, tluszcz, weglodowany, cena/kg, waga
+lista = [["pomidor", 19, 1, 0, 4, 5.7, 350],
+         ["ser mozzarella", 248, 18, 19, 2, 38.32, 325],
+         ["sałata", 13, 1, 0, 2, 3.15, 350]
+         ]
 
 
 def wyliczKalorycznosc(produkt):
