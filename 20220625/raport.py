@@ -29,12 +29,15 @@ def suma(lista):
         tluszcz += i[3]*i[6]/100
         weglowodany += i[4]*i[6]/100
         cena += i[5]*i[6]/1000
+
     return f'{"SUMA":20s}, ' \
            f'kalorie: {kalorie:>6.2f}, ' \
            f'białko: {bialko:>6.2f}, ' \
            f'tluszcz: {tluszcz:>6.2f}, ' \
            f'weglowodany: {weglowodany:>6.2f}, ' \
            f'koszt: {cena:>6.2f} zł'
+
+    return output
 
 
 def main():
