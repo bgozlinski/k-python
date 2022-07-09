@@ -1,0 +1,36 @@
+INFO:kalk_v3:Wywolana z argumentami: 1 2
+INFO:kalk_v3:Wywolana z argumentami: 2 3
+INFO:kalk_v3:Wywolana z argumentami: 2 2
+INFO:kalk_v3:Wywolana z argumentami: 10 0
+ERROR:kalk_v3:Dzielenie przez 0
+Traceback (most recent call last):
+  File "C:\Users\kurs\Documents\k-python\20220709\kalk_v3.py", line 53, in div
+    result = a / b
+ZeroDivisionError: division by zero
+ERROR:__main__:Wstapil blad
+Traceback (most recent call last):
+  File "C:\Users\kurs\Documents\k-python\20220709\use_kalk_v3.py", line 17, in <module>
+    print(f"{a} {operation} {b} = {make_opperation(int(a), int(b), operation)}")
+  File "C:\Users\kurs\Documents\k-python\20220709\kalk_v3.py", line 62, in make_opperation
+    return calc[opperation](a, b)
+  File "C:\Users\kurs\Documents\k-python\20220709\kalk_v3.py", line 32, in add
+    logger.info(f"Wywolana z argumentami: {a} {b}")
+NameError: name 'logger' is not defined
+INFO:kalk_v3:Wywolana z argumentami: 1 2
+INFO:kalk_v3:Wywolana z argumentami: 2 3
+INFO:kalk_v3:Wywolana z argumentami: 2 2
+INFO:kalk_v3:Wywolana z argumentami: 10 0
+ERROR:kalk_v3:Dzielenie przez 0
+Traceback (most recent call last):
+  File "C:\Users\kurs\Documents\k-python\20220709\kalk_v3.py", line 53, in div
+    result = a / b
+ZeroDivisionError: division by zero
+INFO:kalk_v3:Wywolana z argumentami: 1 2
+INFO:kalk_v3:Wywolana z argumentami: 2 3
+INFO:kalk_v3:Wywolana z argumentami: 2 2
+INFO:kalk_v3:Wywolana z argumentami: 10 0
+ERROR:kalk_v3:Dzielenie przez 0
+Traceback (most recent call last):
+  File "C:\Users\kurs\Documents\k-python\20220709\kalk_v3.py", line 53, in div
+    result = a / b
+ZeroDivisionError: division by zero
