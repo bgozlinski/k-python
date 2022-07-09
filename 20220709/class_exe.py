@@ -23,9 +23,8 @@ class Vehicle:
 
     @property
     def energy(self):
-        return  self._energy
+        self._energy
 
-    @energy.setter
 
 f = Vehicle("Ford")
 v = Vehicle("Volkswagen")
