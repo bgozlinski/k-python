@@ -17,19 +17,19 @@ class Circle:
 
     @property
     def diameter(self):
-        return self._radius * 2
+        return self.radius * 2
 
     @diameter.setter
     def diameter(self, value):
-        self._radius = value / 2
+        self.radius = value / 2
 
     @property
     def area(self):
-        return pi * self._radius**2
+        return pi * self.radius**2
 
     @area.setter
     def area(self, value):
-        self._radius = (value / pi) ** 0.5
+        self.radius = (value / pi) ** 0.5
 
 
 c = Circle(5)
