@@ -3,9 +3,7 @@ from math import pi
 
 class Circle:
     def __init__(self, radius=1):
-        self._radius = radius
-        self._area = pi * radius**2
-        self._diameter = 2 * self._radius
+        self.radius = radius
 
     @property
     def radius(self):
@@ -15,8 +13,6 @@ class Circle:
     def radius(self, value):
         if value > 0:
             self._radius = value
-            self._diameter = value * 2
-            self._area = pi * value ** 2
         else:
             raise ValueError("Radius cannot be negative")
 
@@ -27,51 +23,38 @@ class Circle:
     @diameter.setter
     def diameter(self, value):
         self._radius = value / 2
-        self._diameter = value
-        self._area = pi * self._radius ** 2
 
     @property
     def area(self):
-        return pi * self._radius ** 2
+        return pi * self._radius**2
 
     @area.setter
     def area(self, value):
-        self._area = value
         self._radius = (value / pi) ** 0.5
-        self._diameter = 2 * self._radius
 
-#
-# print("Ustawienie promienia 5")
-# c = Circle(5)
 
-# c.radius
-# print(c.radius)
-# print(c.diameter)
-# print(c.area)
+c = Circle(5)
+assert c.radius == 5
+assert c.diameter == 10
+assert c.area == 78.53981633974483
 
-# print("Promień domyślnie powinien przyjemować wartość 1:")
-# c = Circle()
-# print(c.radius)
-# print(c.diameter)
+c = Circle()
+assert c.radius == 1
+assert c.diameter == 2
 
-# print("Kiedy promień się zmienia zmieniają się też średnica i pole powierzchni, np")
-# c = Circle(2)
-# c.radius = 1
-# print(c.radius)
-# print(c.diameter)
-# print(c.area)
-#
-#
+c = Circle(2)
+c.radius = 1
+assert c.diameter == 2
+assert c.area == 3.141592653589793
+
 c = Circle(1)
-c.diameter = 10
-print(c.radius)
-print(c.area)
-#
-# c = Circle(1)
-# c.area = pi * 5 ** 2
-# print(c.radius)
+c.diameter = 4
+assert c.radius == 2.0
+
+c = Circle(1)
+c.area = pi * 5**2
+assert c.radius == 5.0
 
 c = Circle(5)
 c.radius = 3
 c.radius = -2
-print(c.radius)
