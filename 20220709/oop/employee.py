@@ -23,23 +23,71 @@ class Bonus:
     def __init__(self, value):
         self.value = value
 
+    def __add__(self, other):
+        if isinstance(other, Bonus):
+            return self.__class__(self.value + other.value)
+
 
 class ValueBonus(Bonus):
-    pass
+    order = 2
+
+    def calculate(self, to_pay: int):
+        return to_pay + self.value
 
 
 class PercentBonus(Bonus):
-    pass
+    order = 1
+
+    def calculate(self, to_pay: int):
+        return (to_pay * self.value/100) + to_pay
+
+
+class ExtraBonus(Bonus):
+    order = 3
+
+    def calculate(self, to_pay: int):
+        return to_pay + 2 * self.value
 
 
 class PremiumEmployee(Employee):
+    def __init__(self, name, rate_per_hour):
+        super().__init__(name, rate_per_hour)
+        self.bonusList = {}
+
     def pay_salary(self):
         to_pay = super().pay_salary()
-        to_pay += self.bonus.value
+
+        for bonus in sorted(self.bonusList.values(), key=lambda x: x.order):
+            to_pay = bonus.calculate(to_pay)
+
         return to_pay
 
     def give_bonus(self, bonus: Bonus):
-        self.bonus = bonus
+        if bonus.__class__ in self.bonusList:
+            self.bonusList[bonus.__class__] += bonus
+        else:
+            self.bonusList[bonus.__class__] = bonus
+
+
+def test_add_bonuses_together():
+    b1 = ValueBonus(100)
+    b2 = ValueBonus(200)
+    b4 = PercentBonus(10)
+    b5 = PercentBonus(20)
+
+    b3 = b1 + b2
+    b6 = b4 + b5
+
+    assert b3.value == 300
+    assert isinstance(b3, ValueBonus)
+
+    assert b6.value == 30
+    assert isinstance(b6, PercentBonus)
+
+
+def test_percent_bonus():
+    b = PercentBonus(10)
+    assert b.calculate(100) == 110
 
 
 def test_add_value_bonus():
@@ -64,7 +112,7 @@ def test_add_percent_bonus():
     assert e.pay_salary() == (5 * 100) + (5 * 100) * 0.1
 
 
-def add_value_and_percent_bonuses():
+def test_add_value_and_percent_bonuses():
     # scenariusz 1
     b1 = ValueBonus(200)
     b2 = PercentBonus(10)
@@ -75,16 +123,21 @@ def add_value_and_percent_bonuses():
     assert e.pay_salary() == (5 * 100) + (5 * 100) * 0.1 + 200
 
 
-def add_many_value_and_percent_bonusses():
+def test_add_many_value_and_percent_bonusses():
     # kolejny scenariusz
     b1 = ValueBonus(200)
     b2 = PercentBonus(10)
     b3 = ValueBonus(300)
     b4 = PercentBonus(20)
+    b5 = ExtraBonus(100)
+
     e = PremiumEmployee(name="Jan Kowalski", rate_per_hour=100)
     e.register_time(5)
     e.give_bonus(b1)
     e.give_bonus(b2)
     e.give_bonus(b3)
     e.give_bonus(b4)
-    assert e.pay_salary() == (5 * 100) + (5 * 100) * 0.3 + 200 + 300
+    e.give_bonus(b5)
+    e.give_bonus(b5)
+
+    assert e.pay_salary() == (5 * 100) + (5 * 100) * 0.3 + 200 + 300 + 400
