@@ -5,6 +5,14 @@ class Figure:
     def __init__(self, parameter):
         self.parameter = parameter
 
+    def __add__(self, other):
+        if isinstance(other, (int, float)):
+            return Figure(self.area + other)
+        elif isinstance(other, Figure):
+            return self.area + other.area
+        else:
+            return NotImplemented
+
     def __lt__(self, other):
         if self.parameter < other.parameter:
             return True
@@ -30,23 +38,26 @@ class Figure:
             return False
 
     def __eq__(self, other):
-        if self.parameter == other.parameter:
+        if self.area == other.area:
             return True
         else:
             return False
 
     @property
     def parameter(self):
-        return self.parameter
+        return self._parameter
 
     @parameter.setter
     def parameter(self, value):
         if value < 0:
             raise ValueError("Value cant be below 0")
-        self.parameter = value
+        self._parameter = value
 
 
 class Circle(Figure):
+    def __init__(self, parameter=1):
+        super().__init__(parameter)
+
 
     @property
     def diameter(self):
@@ -58,7 +69,7 @@ class Circle(Figure):
 
     @property
     def area(self):
-        return pi * self.parameter ** 2
+        return pi * self.parameter**2
 
     @area.setter
     def area(self, value):
@@ -66,10 +77,13 @@ class Circle(Figure):
 
 
 class Square(Figure):
+    def __init__(self, parameter=1):
+        super().__init__(parameter)
+
 
     @property
     def area(self):
-        return self.parameter ** 2
+        return self.parameter**2
 
     # area = side^2 => side = sqrt(area)
     @area.setter
@@ -77,10 +91,14 @@ class Square(Figure):
         self.parameter = sqrt(value)
 
 
-s = Square(parameter=2)
-# c = Circle(2)
-# c2 = Square(2)
-# print(c1.area)
-# print(c2.area)
-#
-# print(c1 > c2)
+class Triangle(Figure):
+    def __init__(self, parameter=1):
+        super().__init__(parameter)
+
+    @property
+    def area(self):
+        return (self.parameter**2 * sqrt(3)) / 4
+
+    @area.setter
+    def area(self, value):
+        self.parameter = 2 * sqrt((value * sqrt(3)) / 3)
