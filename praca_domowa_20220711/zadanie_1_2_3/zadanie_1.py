@@ -9,8 +9,9 @@ class Circle:
         self.radius = radius
 
     def __add__(self, other):
-        area = self.area + other.area
-        return sqrt(area / pi)
+        # area = self.area + other.area
+        # return sqrt(area / pi)
+        return self.area + other.area
 
     def __lt__(self, other):
         if self.radius < other.radius:
@@ -68,18 +69,46 @@ class Circle:
     def area(self, value):
         self._radius = sqrt(value / pi)
 
+
+class Square:
+    def __init__(self, side):
+        self.side = side
+
+    def __add__(self, other):
+        return self.area + other.area
+
+    def __eq__(self, other):
+        if self.side == other.side:
+            return True
+        else:
+            return False
+
+    @property
+    def side(self):
+        return self._side
+
+    @side.setter
+    def side(self, value):
+        self._side = value
+
+    @property
+    def area(self):
+        return self.side**2
+
+    # area = side^2 => side = sqrt(area)
+    @area.setter
+    def area(self, value):
+        self.side = sqrt(value)
+
+
+s1 = Square(5)
+s2 = Square(8)
 c1 = Circle()
-c2 = Circle(2)
+c2 = Circle(3)
 
-print(c1 == c2)
-
-print(c1>c2)
-
-print(c1<c2)
-
-print(c1<=c2)
-
-print(c1>=c2)
-
-c3 = c1 + c2
-print(c3)
+print(
+    f"Circle radius: {c1.radius}   area: {c1.area}\n"
+    f"Square side:   {s1.side}   area: {s1.area}"
+)
+print(f"{s2 + c2}")
+print(f"{c2 + s2}")
