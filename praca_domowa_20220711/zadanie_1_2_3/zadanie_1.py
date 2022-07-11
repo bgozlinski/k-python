@@ -1,6 +1,3 @@
-#  zadanie 1,2,3
-
-
 from math import pi, sqrt
 
 
