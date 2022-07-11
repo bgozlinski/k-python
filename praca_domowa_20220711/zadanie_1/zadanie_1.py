@@ -1,8 +1,5 @@
-#  zadanie 1
-#  Stwórz klasę reprezentującą okręg (Circle)
-#
-#  Okrąg powinien mieć promień (radius), średnicę (diameter) i pole powierzchni (area) oraz przy-
-#  jemną reprezentację napisową
+#  zadanie 1,2
+
 
 from math import pi, sqrt
 
