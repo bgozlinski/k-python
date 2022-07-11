@@ -6,12 +6,10 @@ class Figure:
         self.parameter = parameter
 
     def __add__(self, other):
-        if isinstance(other, (int, float)):
-            return Figure(self.area + other)
-        elif isinstance(other, Figure):
+        if isinstance(other, Figure):
             return self.area + other.area
         else:
-            return NotImplemented
+            return Figure(self.area + other.area)
 
     def __lt__(self, other):
         if self.parameter < other.parameter:
@@ -58,7 +56,6 @@ class Circle(Figure):
     def __init__(self, parameter=1):
         super().__init__(parameter)
 
-
     @property
     def diameter(self):
         return self.parameter * 2
@@ -79,7 +76,6 @@ class Circle(Figure):
 class Square(Figure):
     def __init__(self, parameter=1):
         super().__init__(parameter)
-
 
     @property
     def area(self):
