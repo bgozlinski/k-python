@@ -25,6 +25,7 @@ class Asystent:
         sleep(self.timeout)
         os.remove(self.temp_voice)
 
+    #  get local time
     @staticmethod
     def time_now():
         t = localtime()
@@ -33,16 +34,43 @@ class Asystent:
         return time_now
 
 
+def file_convert(temp):
+
+    #  merge two non-time strings
+    for i in range(1, len(temp)):
+        if ':' not in (temp[i-1]) and ':' not in temp[i]:
+            break
+    temp[i-1 : i+1] = [' '.join(temp[i-1 : i+1])]
+
+    #  split two time-like strings
+    new_temp = []
+    for i in temp:
+        new_temp.append(i.split('-'))
+
+    return new_temp
+
+
 if __name__ == "__main__":
     assist = Asystent()
-    t = assist.time_now().replace(":", "")
-    print(t)
-
-    # assist.speak("przerwa obiadowa")
-    # assist.speak("czesc")
 
     file = assist.read_file().split()
-    a = file[0].split("-")
-    print(a[0].replace(":", ""))
+    converted_file = (file_convert(file))
+    time_now = assist.time_now()
 
-    print(a[0] < t)
+    for i, j in enumerate(converted_file):
+        if i % 2 == 0:
+            if j[0] < time_now <= j[1]:
+                stop_list = i
+                stop_value = j
+                print(f'stop: {stop_list} value: {stop_value}')
+                break
+
+        else:
+            break
+
+        if i is True:
+            string_to_speak = (converted_file[i+1])
+        else:
+            string_to_speak = 'Koniec'
+    print(string_to_speak)
+    assist.speak(string_to_speak)
