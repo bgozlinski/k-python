@@ -12,9 +12,9 @@ class Asystent:
 
     def read_file(self):
         with open(self.file_name, "r") as input_file:
-            file = input_file.read()
+            read_file = input_file.read()
             input_file.close()
-            return file
+            return read_file
 
     def speak(self, text):
         tts = gTTS(text=text, lang="pl")
@@ -28,10 +28,11 @@ class Asystent:
     #  get local time
     @staticmethod
     def time_now():
+        #  get local time
         t = localtime()
-        time_now = strftime("%H:%M", t)
-
-        return time_now
+        #  format local time to hours:minutes
+        tn = strftime("%H:%M", t)
+        return tn
 
 
 def file_convert(temp):
