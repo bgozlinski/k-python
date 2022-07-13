@@ -59,14 +59,12 @@ if __name__ == "__main__":
     end = False
 
     while True:
-        time_now = '09:00'
-        # time_now = assist.time_now()
+        time_now = assist.time_now()
         if time_now >= converted_file[0][0]:
             break
 
     while True:
-        time_now = '17:00'
-        # time_now = assist.time_now()
+        time_now = assist.time_now()
         for i, j in enumerate(converted_file):
             if ':' in j[0]:
                 if j[0] <= time_now < j[1]:
