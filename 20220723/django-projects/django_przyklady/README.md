@@ -54,5 +54,14 @@ lepiej miec dwa niezalezne srodowika z konkretnymi wersjami pod konkretny projek
 
 ## Tworzenie projektu
 
+    $ django-admin
+
+## Typowe zadania apki webowej
+
+C - Create
+R - Read
+U - Update
+D - Delete
+
 
 

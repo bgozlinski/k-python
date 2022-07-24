@@ -6,7 +6,12 @@ from books.services import BookService, book_service
 # Create your views here.
 
 def listview(request):
-    books = book_service.get_all_books()
+    q = request.GET.get("q")
+    if q:
+        books = book_service.filter(q=q)
+    else:
+        books = book_service.get_all_books()
+
     return render(
         request=request,
         template_name="books.html",
