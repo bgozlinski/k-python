@@ -3,15 +3,14 @@
 {% block title%} Books {% endblock %}
 
 
-    {% block content%}
+{% block content%}
 
-    <h1>Lista książek:</h1>
+<h1>Lista książek:</h1>
 
+    <ul>
+    {% for book in books %}
+    <li><a href="{% url 'books:details' forloop.counter  %}">{{ book.title|title }}</a></li>
+    {% endfor %}
+    </ul>
 
-{% for book in books %}
-<a href=""{{book.name}}</a>
-<br>
-{% endfor %}
-
-<br>
 {% endblock%}

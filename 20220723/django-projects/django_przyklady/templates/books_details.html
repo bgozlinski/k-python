@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Tytuł</th>
+      <th scope="col">Autor</th>
+      <th scope="col">Opis</th>
+      <th scope="col">Rok wydania</th>
+      <th scope="col">Liczba stron</th>
+      <th scope="col">Slug</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ book.title|title }}</td>
+      <td>{{ book.author|title }}</td>
+      <td>{{ book.description|title }}</td>
+      <td>{{ book.year|title }}</td>
+      <td>{{ book.pages|title }}</td>
+      <td>{{ book.slug|title }}</td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+{% endblock %}
